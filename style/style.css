@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --icon-color: #acacbe;
+  --icon-hover-bg: #5b5e71;
+  --placeholder-color: #cccccccc;
+  --outgoing-chat-bg: #343541;
+  --incoming-chat-bg: #444654;
+  --outgoing-chat-border: #343541;
+  --incoming-chat-border: #444654;
+  --chat-text-color: #ffffff;
+  --chat-input-bg: #444654;
+  --chat-input-border: #444654;
+  --chat-input-placeholder-color: #acacbe;
+  --chat-input-text-color: #ffffff;
+  --chat-input-symbols-color: #acacbe;
+  --chat-input-symbols-hover-color: #ffffff;
+  --chat-input-symbols-hover-bg: #5b5e71;
+  --chat-input-symbols-active-color: #ffffff;
+  --chat-input-symbols-active-bg: #5b5e71;
+  --chat-input-symbols-active-border: #5b5e71;
+  --chat-input-symbols-active-border-radius: 50%;
+  --chat-input-symbols-active-border-width: 2px;
+  --chat-input-symbols-active-border-style: solid;
+  --chat-input-symbols-active-padding: 0;
+  --chat-input-symbols-active-margin: 5px; /* Use a single property for margin */
+}
+
+body {
+  background-color: #1f2029;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.chat-container {
+  display: flex;
+  width: 400px; /* Set a fixed width for the chat container */
+  max-height: 600px; /* Set a maximum height */
+  overflow-y: auto; /* Allow scrolling for overflow */
+  background-color: #2c2f38; /* Background color for the chat container */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  padding: 20px; /* Padding inside the container */
+}
+
+.chat-outgoing, .chat-incoming {
+  margin-bottom: 15px; /* Space between messages */
+}
+
+.chat-outgoing .chat-content, .chat-incoming .chat-content {
+  display: flex; /* Flexbox for alignment */
+  align-items: center; /* Center items vertically */
+}
+
+.chat-outgoing {
+  justify-content: flex-end; /* Align outgoing messages to the right */
+}
+
+.chat-incoming {
+  justify-content: flex-start; /* Align incoming messages to the left */
+}
+
+.chat-content {
+  max-width: 70%; /* Limit width of chat bubbles */
+  padding: 10px; /* Padding inside chat bubbles */
+  border-radius: 10px; /* Rounded corners for chat bubbles */
+  position: relative; /* Position for pseudo-elements */
+}
+
+.chat-outgoing .chat-content {
+  background-color: var(--outgoing-chat-bg); /* Background color for outgoing messages */
+  color: var(--chat-text-color); /* Text color */
+}
+
+.chat-incoming .chat-content {
+  background-color: var(--incoming-chat-bg); /* Background color for incoming messages */
+  color: var(--chat-text-color); /* Text color */
+}
+
+.chat-details {
+  display: flex; /* Flexbox for alignment */
+  align-items: center; /* Center items vertically */
+}
+
+.chat-icon {
+  width: 35px; /* Size of the chat icon */
+  border-radius: 50%; /* Make the icon circular */
+  margin-right: 10px; /* Space between icon and text */
+}
+
+.chat-details p {
+  margin: 0; /* Remove default margin */
+  line-height: 1.5; /* Line height for readability */
+}
+
+.material-symbols-rounded {
+  font-size: 20px; /* Size of the icon */
+  color: var(--icon-color); /* Icon color */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-left: 10px; /* Space between text and icon */
+}
+
+.material-symbols-rounded:hover {
+  background-color: var(--icon-hover-bg); /* Change background on hover */
+  border-radius: 50%; /* Make it circular */
+  padding: 5px; /* Padding for hover effect */
+}
+
+/* Input styles (if needed) */
+.chat-input {
+  display: flex; /* Flexbox for input and button */
+  align-items: center; /* Center items vertically */
+  margin-top: 20px; /* Space above input */
+}
+
+.chat-input input {
+  flex: 1; /* Take up remaining space */
+  background-color: var(--chat-input-bg); /* Background color */
+  border: 1px solid var(--chat-input-border); /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Padding inside input */
+  color: var(--chat-input-text-color); /* Text color */
+}
+
+.chat-input input::-moz-placeholder {
+  color: var(--chat-input-placeholder-color); /* Placeholder color */
+}
+
+.chat-input input::placeholder {
+  color: var(--chat-input-placeholder-color); /* Placeholder color */
+}
+
+.chat-input button {
+  background-color: var(--chat-input-symbols-active-bg); /* Background color */
+  border: none; /* Remove border */
+  border-radius: var(--chat-input-symbols-active-border-radius); /* Rounded corners */
+  color: var(--chat-input-symbols-active-color); /* Text color */
+  padding: 10px; /* Padding inside button */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-left: 10px; /* Space between input and button */
+}
+
+.chat-input button:hover {
+  background-color: var(--chat-input-symbols-hover-bg); /* Change background on hover */
+  color: var(--chat-input-symbols-hover-color); /* Change text color on hover */
+}/*# sourceMappingURL=style.css.map */
