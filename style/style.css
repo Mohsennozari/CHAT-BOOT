@@ -37,8 +37,11 @@
 
 /* Body styling */
 body {
-  background: var(--outgoing-chat-bg);
+  background: rgb(10, 3, 55);
   font-size: 16px; /* Default font size */
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height */
 }
 
 /* Chat container styling */
@@ -47,22 +50,79 @@ body {
   padding: 25px 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Space between chat messages */
+  gap: 30px; /* Space between chat messages */
+  overflow-y: auto; /* Allow scrolling */
+  flex-grow: 1; /* Take available space */
 }
 
 /* Chat message styling */
-.chat.outgoing {
-  background-color: var(--outgoing-chat-bg);
-  border: 1px solid var(--outgoing-chat-border);
+.chat.outgoing, .chat.incoming {
   border-radius: 8px; /* Rounded corners */
   padding: 10px;
+  max-width: 70%; /* Limit width */
+  background-color: #26a5bb; /* Light blue background */
+  color: #ffffff; /* White text */
+  font-size: 1rem; /* Default font size */
+  line-height: 1.5; /* Line height */
+  word-wrap: break-word; /* Wrap words */
+  margin-bottom: 10px; /* Space between messages */
+}
+
+.chat.outgoing {
+  align-self: flex-end; /* Align outgoing messages to the right */
+  -color: #26a5bb; /* Light blue background */
+}
+
+.chat.incoming {
+  align-self: flex-start; /* Align incoming messages to the left */
+  background-color: #26a5bb; /* Light blue background */
+}
+
+/* Chat input styling */
+.chat-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--chat-input-border);
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  margin-top: auto; /* Align to the bottom */
+}
+
+.chat.incoming {
+  align-self: flex-start; /* Align incoming messages to the left */
+}
+
+/* Chat details styling */
+.chat-details {
+  display: flex;
+  align-items: center; /* Center vertically */
+  margin-bottom: 5px; /* Space between details and message */
+}
+
+.chat-details img {
+  width: 35px; /* Profile picture size */
+  height: 35px; /* Profile picture size */
+  -o-object-fit: cover;
+     object-fit: cover; /* Cover the profile picture */
+  border-radius: 50%; /* Circular profile picture */
+  margin-right: 10px; /* Space between profile picture and name */
+}
+
+.chat-details p {
+  font-weight: bold; /* Bold font weight for name */
+  font-size: 1rem; /* Default font size */
+}
+
+.chat.outgoing {
+  border: 1px solid var(--outgoing-chat-border);
+  align-self: flex-end; /* Align outgoing messages to the right */
 }
 
 .chat.incoming {
   background: var(--incoming-chat-bg);
   border: 1px solid var(--incoming-chat-border);
-  border-radius: 8px; /* Rounded corners */
-  padding: 10px;
+  align-self: flex-start; /* Align incoming messages to the left */
 }
 
 .chat-content {
@@ -90,81 +150,15 @@ body {
   font-size: 1rem; /* Adjusted font size */
 }
 
-/* Button styles */
-span.material-symbols-rounded {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  cursor: pointer;
-  transition: color 0.3s, background-color 0.3s; /* Smooth transition for hover effects */
-}
-
-span.material-symbols-rounded:hover {
-  color: var(--chat-input-symbols-hover-color);
-  background-color: var(--chat-input-symbols-hover-bg);
-  border-radius: 50%;
-  padding: 5px; /* Add padding for hover effect */
-}
-
-/* Typing animation styles */
-.typing-animation {
-  display: flex;
-  align-items: center;
-}
-
-.typing-dot {
-  width: 8px;
-  height: 8px;
-  margin: 0 2px;
-  border-radius: 50%;
-  background-color: var(--icon-color);
-  animation: typing 0.6s infinite alternate;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
-}
-
-@keyframes typing {
-  0% {
-    opacity: 0.5;
-    transform: scale(1); /* Initial scale */
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2); /* Scale up */
-  }
-  100% {
-    opacity: 0.5;
-    transform: scale(1); /* Scale back */
-  }
-}
-/* Improved typing dots animation */
-.typing-animation .typing-dot {
-  background: var(--text-color);
-  opacity: 0.7;
-  border-radius: 50%;
-  margin: 0 3px;
-  animation: animatedots 1.5s ease-in-out infinite;
-}
-
-@keyframes animatedots {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-    opacity: 1; /* Fully visible */
-  }
-  100% {
-    transform: translateY(0px);
-    opacity: 0.5; /* Fade out */
-  }
-}
-/* Typing input styles */
+/* Typing container styles */
 .typing-container {
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: var(--incoming-chat-bg);
-  border-radius: 8px; /* Rounded corners */
+  margin: 10px 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 18px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
 }
 
 .typing-textarea {
@@ -174,23 +168,67 @@ span.material-symbols-rounded:hover {
 }
 
 textarea {
-  width: 100%;
+  width: 300px; /* Take up all available space inside typing-textarea */
   height: 50px; /* Fixed height for the textarea */
   padding: 10px;
-  border: 1px solid var(--chat-input-border);
-  border-radius: 4px;
-  background-color: var(--chat-input-bg);
-  color: var(--chat-input-text-color);
-  resize: none; /* Disable resizing */
+  border: 2px solid var(--chat-input-border);
+  border-radius: 40px;
+  background: linear-gradient(45deg, rgb(1, 58, 114), rgb(0, 178, 151));
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  font-family: inherit; /* Use the same font as the rest of the page */
   font-size: 1rem; /* Font size for textarea */
+  resize: none; /* Disable resizing */
+  overflow: hidden; /* Hide overflow */
+  color: var(--chat-input-text-color); /* Set text color */
+  transition: color 0.3s, border-color 0.3s; /* Smooth transition for color and border */
+  outline: none; /* Remove outline on focus */
+}
+
+textarea:focus {
+  border-color: var(--chat-input-border-focus); /* Change border color on focus */
+  color: var(--chat-input-text-color-focus); /* Change text color on focus */
 }
 
 textarea::-moz-placeholder {
-  color: var(--chat-input-placeholder-color);
+  color: var(--chat-input-placeholder-color); /* Set placeholder color */
+  text-align: center; /* Center placeholder text */
+  padding-top: 3px; /* Add padding to top of placeholder */
 }
 
 textarea::placeholder {
-  color: var(--chat-input-placeholder-color);
+  color: var(--chat-input-placeholder-color); /* Set placeholder color */
+  text-align: center; /* Center placeholder text */
+  padding-top: 3px; /* Add padding to top of placeholder */
+}
+
+textarea:focus {
+  outline: none; /* Remove outline on focus */
+  color: var(--chat-input-text-color);
+  resize: none; /* Disable resizing */
+  font-size: 1rem; /* Font size for textarea */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+@media screen and (min-width: 1000px) {
+  textarea {
+    width: 800px; /* Adjust the width for larger screens */
+  }
+}
+@media screen and (min-width: 1500px) {
+  textarea {
+    width: 800px; /* Adjust the width for larger screens */
+    margin-left: 500px;
+  }
+}
+textarea::-moz-placeholder {
+  text-align: center;
+  padding-top: 3px;
+  color: rgb(215, 215, 215);
+}
+textarea::placeholder {
+  text-align: center;
+  padding-top: 3px;
+  color: rgb(215, 215, 215);
 }
 
 /* Button styles for send and theme buttons */
@@ -198,9 +236,10 @@ textarea::placeholder {
   margin-left: 10px; /* Space between textarea and button */
   cursor: pointer;
   padding: 10px;
-  background-color: var(--chat-input-symbols-active-bg);
+  background: linear-gradient(45deg, rgb(0, 128, 255), rgb(0, 255, 217));
   border-radius: 50%;
   transition: background-color 0.3s, transform 0.2s; /* Add transform for scaling */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
 }
 
 #send-btn:hover {
@@ -208,15 +247,66 @@ textarea::placeholder {
   transform: scale(1.1); /* Scale up on hover */
 }
 
+.typing-animation {
+  display: flex;
+  gap: 5px; /* Adjust spacing between dots */
+}
+
+.typing-dot {
+  width: 10px; /* Size of the dots */
+  height: 10px;
+  background-color: rgb(255, 255, 255); /* Color of the dots */
+  border-radius: 50%;
+  animation: typing 1.5s infinite ease-in-out;
+  animation-delay: var(--delay);
+}
+
+@keyframes typing {
+  0%, 20% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-5px); /* Adjust the jump height */
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+}
 /* Theme controls */
 .typing-controls {
+  position: absolute;
   display: flex;
   justify-content: flex-end;
-  margin-top: 10px;
+  align-items: center;
+  bottom: 25px;
+  right: 30px;
+}
+
+#theme-btn {
+  align-items: center;
+  background-color: #26a5bb;
+  width: 40px;
+  height: 40px;
+  padding: 7px;
+  border-radius: 10px;
+}
+
+#delete-btn {
+  color: #ffffff;
+  align-items: center;
+  background-color: #e15151;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 10px;
+  margin: 4px;
 }
 
 .typing-controls span {
-  margin-left: 10px; /* Space between control buttons */
+  /* Space between control buttons */
   cursor: pointer;
   transition: color 0.3s, transform 0.2s; /* Add transform for scaling */
 }
@@ -224,4 +314,29 @@ textarea::placeholder {
 .typing-controls span:hover {
   color: var(--chat-input-symbols-hover-color);
   transform: scale(1.1); /* Scale up on hover */
+}
+
+.chat-outgoing {
+  background-color: #0089a1;
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 10px;
+  color: #ffffff;
+}
+
+.chat-incoming {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  background-color: rgba(225, 81, 81, 0.5843137255);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+@media only screen and (min-width: 1500px) {
+  .chat-incoming {
+    margin: 0 20%;
+  }
 }/*# sourceMappingURL=style.css.map */
