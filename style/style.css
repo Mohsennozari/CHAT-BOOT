@@ -37,7 +37,7 @@
 
 /* Body styling */
 body {
-  background: rgb(10, 3, 55);
+  background-color: #f0f0f0;
   font-size: 16px; /* Default font size */
   display: flex;
   flex-direction: column;
@@ -173,7 +173,7 @@ textarea {
   padding: 10px;
   border: 2px solid var(--chat-input-border);
   border-radius: 40px;
-  background: linear-gradient(45deg, rgb(1, 58, 114), rgb(0, 178, 151));
+  background-color: #000000;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
   font-family: inherit; /* Use the same font as the rest of the page */
   font-size: 1rem; /* Font size for textarea */
@@ -190,13 +190,13 @@ textarea:focus {
 }
 
 textarea::-moz-placeholder {
-  color: var(--chat-input-placeholder-color); /* Set placeholder color */
+  color: rgb(255, 255, 255); /* Set placeholder color */
   text-align: center; /* Center placeholder text */
   padding-top: 3px; /* Add padding to top of placeholder */
 }
 
 textarea::placeholder {
-  color: var(--chat-input-placeholder-color); /* Set placeholder color */
+  color: rgb(255, 255, 255); /* Set placeholder color */
   text-align: center; /* Center placeholder text */
   padding-top: 3px; /* Add padding to top of placeholder */
 }
@@ -223,12 +223,12 @@ textarea:focus {
 textarea::-moz-placeholder {
   text-align: center;
   padding-top: 3px;
-  color: rgb(215, 215, 215);
+  color: rgb(255, 255, 255);
 }
 textarea::placeholder {
   text-align: center;
   padding-top: 3px;
-  color: rgb(215, 215, 215);
+  color: rgb(255, 255, 255);
 }
 
 /* Button styles for send and theme buttons */
@@ -316,27 +316,66 @@ textarea::placeholder {
   transform: scale(1.1); /* Scale up on hover */
 }
 
+/* Base styles for chat messages */
 .chat-outgoing {
-  background-color: #0089a1;
-  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center; /* Centers items vertically */
+  margin-bottom: 5px;
+  border-radius: 20px;
+  padding: 15px 20px; /* Adjusted padding for a more balanced look */
+  max-width: 80%; /* Prevents messages from stretching too wide
+width: fit-content; /* Adjusts to the content width */
+  max-width: 80%; /* Prevents messages from stretching too wide */
   border-radius: 10px;
-  padding: 20px;
+  padding: 15px 20px; /* Adjusted padding for a more balanced look */
   margin-top: 10px;
-  color: #ffffff;
+  margin-bottom: 5px;
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.549); /* Adds subtle shadow */
+  color: #000000;
+  align-self: flex-end; /* Aligns the outgoing message to the right */
+  display: inline-block; /* Allows the width to adjust based on content */
 }
 
 .chat-incoming {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: center; /* Centers items vertically */
   margin-bottom: 5px;
-  background-color: rgba(225, 81, 81, 0.5843137255);
+  background-color: rgba(179, 179, 179, 0.5803921569);
   border-radius: 20px;
-  padding: 20px;
+  padding: 15px 20px; /* Adjusted padding for a more balanced look */
+  max-width: 80%; /* Prevents messages from stretching too wide */
+  width: -moz-fit-content;
+  width: fit-content; /* Adjusts to the content width */
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.549); /* Adds subtle shadow */
+  color: #000000;
 }
 
+.chat-incoming .avatar {
+  width: 40px; /* Size of the avatar */
+  height: 40px;
+  border-radius: 50%; /* Makes the avatar circular */
+  margin-right: 10px; /* Space between the avatar and message */
+  background-color: #ccc; /* Placeholder color */
+  flex-shrink: 0; /* Prevents the avatar from shrinking */
+}
+
+.chat-incoming .message-content {
+  background: rgba(225, 81, 81, 0.5843137255); /* Keeps background consistent */
+  border-radius: 20px;
+  padding: 10px; /* Padding inside the message bubble */
+  max-width: calc(100% - 50px); /* Adjusts to fit next to the avatar */
+}
+
+/* Media Query for larger screens */
 @media only screen and (min-width: 1500px) {
-  .chat-incoming {
-    margin: 0 20%;
+  .chat-incoming, .chat-outgoing {
+    margin: 0 20%; /* Centers messages with horizontal margins */
+  }
+}
+/* Responsive adjustments */
+@media only screen and (max-width: 600px) {
+  .chat-incoming, .chat-outgoing {
+    max-width: 90%; /* Increases width on smaller screens */
   }
 }/*# sourceMappingURL=style.css.map */
