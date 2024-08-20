@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title</title>
+    <title>Chat Application</title>
     
     <link rel="stylesheet" href="/style/style.css"> 
     <!-- Link to CSS file -->
@@ -16,63 +16,56 @@
 </head>
 <body>
     <!-- Main content goes here -->
-
-<div class="cahat-container">
-    <div class="chat-outgoing">
-        <div class="chat-content">
-            <div class="chat-details">
-                <img src="/assets/user.jpg" alt="" class="chat-icon">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi atque, eos quod unde, illum ullam consequuntur veritatis pariatur adipisci quia ipsum in, nemo perferendis voluptatibus asperiores delectus aperiam magni debitis!</p>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="chat-incoming">
-    <div class="chat-outgoing">
-        <div class="chat-content">
-            <div class="chat-details">
-                <img src="/assets/chatbot.jpg" alt="" class="chat-icon">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi atque, eos quod unde, illum ullam consequuntur veritatis pariatur adipisci quia ipsum in, nemo perferendis voluptatibus asperiores delectus aperiam magni debitis!</p>
-
-            </div>
-            <span slass="material-symbols-rounded">content-copy</span>
-        </div>
-    </div>
-</div>
-
-
-<div class="chat-incoming">
-    <div class="chat-outgoing">
-        <div class="chat-content">
-            <div class="chat-details">
-                <img src="/assets/chatbot.jpg" alt="" class="chat-icon">
-                <div class="typing-animation">
-                    
-                    <div class="typing-dot"></div> 
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                    
-                    
+    <div class="chat-container">
+        <div class="chat-outgoing">
+            <div class="chat-content">
+                <div class="chat-details">
+                    <img src="/assets/user.jpg" alt="User" class="chat-icon" style="width: 100px; height: 100px;">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi atque, eos quod unde, illum ullam consequuntur veritatis pariatur adipisci quia ipsum in, nemo perferendis voluptatibus asperiores delectus aperiam magni debitis!</p>
                 </div>
             </div>
-            <span slass="material-symbols-rounded">content-copy</span>
+        </div>
+
+        <div class="chat-incoming">
+            <div class="chat-content">
+                <div class="chat-details">
+                    <img src="/assets/chatbot.jpg" alt="Chatbot" class="chat-icon" style="width: 100px; height: 100px;">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi atque, eos quod unde, illum ullam consequuntur veritatis pariatur adipisci quia ipsum in, nemo perferendis voluptatibus asperiores delectus aperiam magni debitis!</p>
+                </div>
+                <span class="material-symbols-rounded">content-copy</span>
+            </div>
+        </div>
+
+        <div class="chat-incoming">
+            <div class="chat-content">
+                <div class="chat-details">
+                    <img src="/assets/chatbot.jpg" alt="Chatbot" class="chat-icon" style="width: 100px; height: 100px;">
+                    <div class="typing-animation">
+                        <div class="typing-dot" style="--delay: 0.2s"></div> 
+                        <div class="typing-dot" style="--delay: 0.3s"></div>
+                        <div class="typing-dot" style="--delay: 0.4s"></div>
+                    </div>
+                </div>
+                <span class="material-symbols-rounded">content-copy</span>
+            </div>
         </div>
     </div>
-</div>
 
+    <!-- Typing container -->
+    <div class="typing-container">
+        <div class="typing-content">
+            <div class="typing-textarea">
+                <textarea id="chat-input" placeholder="Enter a prompt here"></textarea>
+                <span id="send-btn" class="material-symbols-rounded">send</span>
+            </div>
+        </div>
+    </div>
 
-
-
-
-
-
-
-
+    <div class="typing-controls">
+        <span id="theme-btn" class="material-symbols-rounded">light_mode</span>
+        <span id="delete-btn" class="material-symbols-rounded">delete</span>
+    </div>
 
     <script src="script.js"></script> <!-- Link to JavaScript file -->
 </body>
 </html>
-<!-- This is the end of the HTML file -->
