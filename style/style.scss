@@ -383,3 +383,22 @@ textarea::placeholder {
         max-width: 90%; /* Increases width on smaller screens */
     }
 }
+/* Light Mode Styles */
+.light-mode {
+    background-color: #000000; /* White background for light mode */
+    color: #000000; /* Black text for light mode */
+}
+
+.light-mode body {
+    background-color: #000000; /* Light gray background for chat container */
+}
+
+.light-mode .chat-outgoing {
+    background-color: #ffffff; /* Light background for outgoing messages */
+}
+
+.light-mode .chat-incoming {
+    background-color: #ffffff; /* Light background for incoming messages */
+}
+
+/* Adjust other styles as needed for light mode */
